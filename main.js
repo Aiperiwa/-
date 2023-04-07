@@ -1,5 +1,5 @@
-const userName = 'https://jsonplaceholder.typicode.com/users'
-const userTodos = 'https://jsonplaceholder.typicode.com/todos'
+const apiName = 'https://jsonplaceholder.typicode.com/users'
+const apiTodos = 'https://jsonplaceholder.typicode.com/todos'
 
 const loader = document.createElement('div')
 loader.classList = 'loader'
@@ -13,7 +13,7 @@ error.textContent = 'Произошла ошибка при попытке за�
 
 
 
-fetch(userName)
+fetch(apiName)
   .then(response => response.json())
   .then(userData => {
     const box = document.createElement('div')
@@ -37,12 +37,9 @@ fetch(userName)
     document.body.append(todosBox)
 
     const errorTd = document.createElement('div')
+    errorTd.classList = 'errorTd'
     errorTd.textContent = 'Произошла ошибка'
-    errorTd.style.color = '#D52626'
-    errorTd.style.fontSize = '35px'
-
-
-
+  
     userData.forEach((user) => {
       const userBtn = document.createElement('button')
       userBtn.classList.add("userBtn")
@@ -52,7 +49,6 @@ fetch(userName)
       userBtn.addEventListener("click", () => {
         const ladingTd = document.createElement('div')
         ladingTd.textContent = 'Загрузка...'
-        ladingTd.style.color = '#000000;'
         todoDiv.appendChild(ladingTd)
         ladingTd.style.fontSize = '20px'
 
@@ -73,7 +69,7 @@ fetch(userName)
 
 async function getData(userId) {
   try {
-    const response = await fetch(`${userTodos}?userId=${userId}`)
+    const response = await fetch(`${apiTodos}?userId=${userId}`)
     const data = await response.json()
     const todoDiv = document.querySelector('.todos')
     todoDiv.textContent = ''

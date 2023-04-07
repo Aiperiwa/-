@@ -66,6 +66,11 @@ body {
   font-family: 'Verdana';
 }
 
+.errorTd {
+  color: #D52626;
+  font-size: 35px;
+}
+
 .todo-title {
   font-family: 'Verdana';
   font-size: 40px;
